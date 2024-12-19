@@ -1,0 +1,177 @@
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Merriweather:wght@300;400&display=swap');
+
+body {
+    font-family: 'Merriweather', serif;
+    background: linear-gradient(135deg, #ff9a9e, #fad0c4, #fbc2eb);
+    background-size: 400% 400%;
+    animation: gradientBackground 10s ease infinite;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+@keyframes gradientBackground {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.envelope-container {
+    position: relative;
+    width: 100%;
+    max-width: 450px; /* Tamaño adecuado */
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.envelope {
+    width: 100%;
+    height: 250px;
+    background: #ff6b81;
+    border: 2px solid #ff4e6a;
+    border-radius: 10px;
+    position: relative;
+    transition: transform 0.5s ease;
+    cursor: pointer;
+    z-index: 2;
+}
+
+.envelope .flap {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #ff4e6a;
+    border-radius: 10px 10px 0 0;
+    transform-origin: top;
+    transition: transform 0.5s ease;
+    clip-path: polygon(0% 0%, 50% 50%, 100% 0%, 100% 100%, 0% 100%);
+}
+
+.envelope.open .flap {
+    transform: rotateX(180deg);
+}
+
+.card {
+    background-color: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    width: 100%;
+    max-width: 450px;
+    height: auto;
+    text-align: justify;
+    position: relative;
+    transform: scale(0);
+    transform-origin: center;
+    transition: transform 0.5s ease, opacity 0.5s ease;
+    opacity: 0;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.card.hidden {
+    display: none;
+}
+
+.card.expanded {
+    transform: scale(1);
+    opacity: 1;
+}
+
+.card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: linear-gradient(90deg, #ff9a9e, #fad0c4, #fbc2eb);
+    animation: borderGradient 5s linear infinite;
+}
+
+@keyframes borderGradient {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 100% 50%; }
+}
+
+h1 {
+    font-family: 'Great Vibes', cursive;
+    font-size: 28px;
+    color: #ff6b81;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+p {
+    font-family: 'Merriweather', serif;
+    font-size: 18px;
+    line-height: 1.6;
+    color: #4a4a4a;
+    margin-bottom: 15px;
+}
+
+p:last-of-type {
+    margin-bottom: 0;
+}
+
+strong {
+    color: #000000;
+    font-size: 20px;
+    display: block;
+    text-align: right;
+    margin-top: 20px;
+    font-family: 'Great Vibes', cursive;
+}
+
+@media (max-width: 768px) {
+    .envelope-container {
+        max-width: 95%; /* Aumentar espacio en móviles */
+    }
+
+    .envelope {
+        height: 220px; /* Ajustar proporción */
+    }
+
+    .card {
+        max-width: 95%; /* Asegurarse de que se ajuste al móvil */
+        padding: 15px;
+    }
+
+    h1 {
+        font-size: 24px;
+    }
+
+    p {
+        font-size: 16px;
+    }
+
+    strong {
+        font-size: 18px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .envelope-container {
+        max-width: 500px;
+    }
+
+    .card {
+        max-width: 500px;
+        padding: 25px;
+    }
+
+    h1 {
+        font-size: 32px;
+    }
+
+    p {
+        font-size: 20px;
+    }
+}

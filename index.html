@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carta Interactiva</title>
+    <link rel="icon" href="flowers.png" type="image/x-icon">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="envelope-container">
+        <div class="envelope" onclick="openEnvelope()">
+            <div class="flap"></div>
+        </div>
+        <div class="card hidden">
+            <h1>Querido Darwin</h1>
+            <p>
+                Desde el primer momento en que te conocí, supe que eras alguien especial. Hay algo en tu forma de ser, en cómo iluminas cada espacio con tu sonrisa y en cómo encuentras la manera perfecta de hacer que cualquiera se sienta bienvenido, que simplemente me cautivó.
+            </p>
+            <p>
+                Quiero que sepas que no me arrepiento ni por un segundo de aquel día en que nuestras vidas se cruzaron. Conocerte ha sido un regalo inesperado, uno que atesoro profundamente. Eres una persona maravillosa, llena de cualidades que admiro y respeto.
+            </p>
+            <p>
+                Es difícil poner en palabras lo agradecida que estoy por tenerte en mi vida. Cada conversación, cada risa compartida, cada pequeño momento juntos han significado mucho más de lo que imaginas.
+            </p>
+            <p>
+                Te dedico esta carta como un pequeño reflejo de lo que siento. No solo como una muestra de amistad, sino también como un deseo sincero de que, tal vez algún día, nuestras vidas tomen un camino diferente y podamos ser algo más.
+            </p>
+            <p>Hasta entonces, seguiré disfrutando de cada momento que compartimos, porque estar contigo es, simplemente, especial.</p>
+            <p>Con mucho cariño,</p>
+            <p><strong>El futuro amor de tu vida</strong></p>
+        </div>
+    </div>
+
+    <script>
+        function openEnvelope() {
+            const envelope = document.querySelector('.envelope');
+            const card = document.querySelector('.card');
+
+            envelope.classList.add('open');
+            setTimeout(() => {
+                envelope.style.display = 'none'; // Ocultar el sobre
+                card.classList.remove('hidden'); // Mostrar la carta
+                card.classList.add('expanded'); // Expandir la carta
+            }, 500);
+        }
+    </script>
+</body>
+</html>
